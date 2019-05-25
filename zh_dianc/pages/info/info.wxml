@@ -1,0 +1,116 @@
+<view class="font">
+    <view class="shop_header" style="background:{{color}}">
+        <view class="shop_header1">
+            <view class="shop_left">
+                <image mode="aspectFill" src="{{url}}{{store.logo}}" style="width:100%;height:100%;"></image>
+            </view>
+            <view class="shop_right">                   
+                        <view class="sh_text1">{{store.name}}</view>
+                        <view class="sh_title1">   
+                            <text>人均消费¥{{store.start_at}}元</text>
+                        </view>
+                    </view>
+        </view>        
+    </view>
+<view class="info_seller">
+        <view class="info_sellertitle">
+            <view>商家信息</view>
+            <view class="sjxxright">
+                <image bindtap="gbbjyy" class="gbbjyy" src="../images/{{bjyylb}}.png" wx:if="{{store.store_mp3!=''&&store.is_mp3=='1'}}"></image>
+                <view bindtap="showShareModal" class="share-btn">
+                    <image src="../images/fx.png"></image>
+                    <view style="color: #888">分享</view>
+                </view>
+            </view>
+        </view>
+        <view class="info_sellertime" style="border-bottom:1rpx solid #E7E7E8;">
+            <view>营业时间</view>
+            <view>{{store.time}}-{{store.time2}}</view>
+            <view style="margin-left:30rpx;" wx:if="{{store.time3!=''&&store.time4!=''}}">{{store.time3}}-{{store.time4}}</view>
+        </view>
+        <view bindtap="call_phone" class="info_sllertel">
+            <view class="info_sllertelw">
+                <view>商家电话</view>
+                <view>{{store.tel}}</view>
+            </view>
+            <image class="info_sllerimg" src="../images/Path@2x.png"></image>
+        </view>
+        <view class="info_sllertel">
+            <view class="info_sllertelw">
+                <view>商家地址</view>
+                <view>{{store.address}}</view>
+            </view>
+            <image class="info_sllerimg" src="../images/Path@2x.png"></image>
+        </view>
+        <view bindtap="tzsjhj" class="info_sllertel" data-sjid="{{store.id}}">
+            <view class="info_sllertelw">
+                <view>商家环境</view>
+            </view>
+            <image class="info_sllerimg" src="../images/Path@2x.png"></image>
+        </view>     
+       
+    </view>
+    
+     <movable-area style="pointer-events: none;height: 100%;width: 100%;position:absolute;left:20rpx;;top:900rpx;">
+  	<movable-view  direction="all" style="pointer-events: auto;height: 50px; width: 50px;border-radius: 50%; background: #34AAFF;">
+		<navigator class='navi' url='/zh_dianc/pages/comment/comment'>评论</navigator>
+	</movable-view>
+</movable-area>
+
+   
+    <view class="copyright">
+        <view bindtap="tzxcx" class="copyright_logo" data-appid="{{bqxx.tz_appid}}">
+            <image class="copyright_img" mode="aspectFill" src="{{url}}{{bqxx.bq_logo}}"></image>
+            <view class="copyright_text">{{bqxx.bq_name}}</view>
+        </view>
+        <view class="copyright_txt">{{bqxx.support}}</view>
+    </view>
+</view>
+<view class="share-modal {{share_modal_active}}">
+    <view class="share-modal-body">
+        <view class="flex-row">
+            <view class="flex-grow-1 flex-x-center">
+                <button class="share-bottom" openType="share">
+                    <image src="../images/wxfx.png"></image>
+                    <view>分享给朋友</view>
+                </button>
+            </view>
+            <view class="flex-grow-1 flex-x-center">
+                <view bindtap="getGoodsQrcode" class="share-bottom">
+                    <image src="../images/schb.png"></image>
+                    <view>分享商家海报</view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="shareModalClose" class="share-modal-close flex-y-center flex-x-center">关闭</view>
+    </view>
+</view>
+<view class="goods-qrcode-modal {{goods_qrcode_active}}">
+    <view class="goods-qrcode-body flex-col">
+        <view class="flex-grow-1" style="position: relative">
+            <view style="position: absolute;left: 0;top:0;width: 100%;height: 100%;padding: 100rpx 100rpx 60rpx">
+                <view class="goods-qrcode-box">
+                    <view class="goods-qrcode-loading flex-x-center flex-y-center">
+                        <view class="flex-x-center flex-col">
+                            <image src="../images/loading2.svg" style="width: 150rpx;height: 150rpx"></image>
+                            <view style="color: #888">海报生成中</view>
+                        </view>
+                    </view>
+                    <image bindtap="goodsQrcodeClick" class="goods-qrcode {{goods_qrcode?'active':''}}" data-src="{{goods_qrcode}}" mode="aspectFit" src="{{goods_qrcode}}"></image>
+                </view>
+            </view>
+        </view>
+        <view class="flex-grow-0 flex-col flex-x-center" style="padding: 0 60rpx 80rpx">
+            <view style="margin-bottom: 20rpx;padding: 0 40rpx">
+                <button bindtap="saveGoodsQrcode" data-src="{{goods_qrcode}}" style="background: #34aaff;color: #fff;" wx:if="{{goods_qrcode}}">
+          保存图片
+        </button>
+                <button style="opacity: .4" wx:else>保存图片</button>
+            </view>
+            <view style="color: #888;font-size: 10pt;text-align: center">保存至相册可以分享到朋友圈</view>
+        </view>
+        <view bindtap="goodsQrcodeClose" class="goods-qrcode-close">
+            <image src="../images/icon-close2.png" style="width: 70rpx;height: 70rpx;display: block"></image>
+        </view>
+    </view>
+</view>

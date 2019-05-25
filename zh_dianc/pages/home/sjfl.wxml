@@ -1,0 +1,132 @@
+<scroll-view bindscrolltolower="sljz" class="films" scrollY="true" style="height:{{scrollHeight}}px">
+    <view class="recommed">
+        <view class="paixu">
+            <view bindtap="tabClick" class="{{activeIndex==index?'selected':'default'}}" id="{{index}}" wx:for="{{listarr}}" wx:key="*this">{{item}}
+          </view>
+        </view>
+        
+       
+        <view class="jzz" hidden="{{qqsj}}">
+            <image class="Rotation" src="../images/jzz.png"></image>
+            <view>加载中...</view>
+        </view>
+        
+<!--推荐-->
+        <view hidden="{{activeIndex!=0}}">
+            <block wx:if="{{qqsj}}">
+                <view bindtap="tzsj" class="recommed_list" data-sjid="{{item}}" wx:if="{{tjstorelist.length!=0}}" wx:for="{{tjstorelist}}">
+                    <image class="recommed_img" src="{{url}}{{item.logo}}"></image>
+                    <view class="recommed_content" style="flex:1">
+                        <view class="recommed_title">
+                            <view class="title_right">{{item.name}}</view>
+                        </view>
+                        <view class="recommed_title1">
+                            <view class="pingjia_fenshu3">
+                                <view class="kximg">
+                                    <image src="../images/i-star.png"></image>
+                                </view>
+                                <view class="sximg" style="width: {{item.score*20}}%">
+                                    <image src="../images/i-stars.png"></image>
+                                </view>
+                            </view>
+                            <!-- <view class="pingfen">{{item.score}}</view> -->
+                            <view class='pingfen' wx:if='{{item.score==0}}'>暂无评分</view>                  
+                            <view class="pingfen" wx:else>{{item.score}}</view>
+                            <view class="recommed_midel">距你{{item.aa}}</view>
+                        </view>
+                        
+                    </view>
+                </view>
+                <view class="jzz" hidden="{{mygd}}">
+                    <image class="Rotation" src="../images/jzz.png"></image>
+                    <view>加载中...</view>
+                </view>
+                <view class="kong" wx:if="{{tjstorelist.length==0}}">
+                    <image src="../images/wushuju.png"></image>
+                    <view>此分类暂无数据</view>
+                </view>
+            </block>
+        </view>
+
+<!--距离-->
+        <view hidden="{{activeIndex!=1}}">
+            <block wx:if="{{qqsj}}">
+                <view bindtap="tzsj" class="recommed_list" data-sjid="{{item}}" wx:if="{{xlstorelist.length!=0}}" wx:for="{{xlstorelist}}">
+                    <image class="recommed_img" src="{{url}}{{item.logo}}"></image>
+                    <view class="recommed_content" style="flex:1">
+                        <view class="recommed_title">
+                            <view class="title_right">{{item.name}}</view>
+                        </view>
+                        <view class="recommed_title">
+                            <view class="pingjia_fenshu3">
+                                <view class="kximg">
+                                    <image src="../images/i-star.png"></image>
+                                </view>
+                                <view class="sximg" style="width: {{item.score*20}}%">
+                                    <image src="../images/i-stars.png"></image>
+                                </view>
+                            </view>
+                            <!-- <view class="pingfen">{{item.score}}</view> -->
+                            <view class='pingfen' wx:if='{{item.score==0}}'>暂无评分</view>                  
+                            <view class="pingfen" wx:else>{{item.score}}</view>
+                            <view class="recommed_midel">距你{{item.aa}}</view>
+                        </view>
+                       
+                    </view>
+                   
+                </view>
+                <view class="jzz" hidden="{{mygd}}">
+                    <image class="Rotation" src="../images/jzz.png"></image>
+                    <view>加载中...</view>
+                </view>
+                <view class="kong" wx:if="{{xlstorelist.length==0}}">
+                    <image src="../images/wushuju.png"></image>
+                    <view>此分类暂无数据</view>
+                </view>
+            </block>
+        </view>
+
+
+
+        <view hidden="{{activeIndex!=2}}">
+            <block wx:if="{{qqsj}}">
+                <view bindtap="tzsj" class="recommed_list" data-sjid="{{item}}" wx:if="{{pfstorelist.length!=0}}" wx:for="{{pfstorelist}}">
+                    <image class="recommed_img" src="{{url}}{{item.logo}}"></image>
+                    <view class="recommed_content" style="flex:1">
+                        <view class="recommed_title">
+                            <view class="title_right">{{item.name}}</view>
+                        </view>
+                        <view class="recommed_title">
+                            <view class="pingjia_fenshu3">
+                                <view class="kximg">
+                                    <image src="../images/i-star.png"></image>
+                                </view>
+                                <view class="sximg" style="width: {{item.score*20}}%">
+                                    <image src="../images/i-stars.png"></image>
+                                </view>
+                            </view>
+                            <!-- <view class="pingfen">{{item.score}}</view> -->
+                            <view class='pingfen' wx:if='{{item.score==0}}'>暂无评分</view>                  
+                            <view class="pingfen" wx:else>{{item.score}}</view>
+                            <view class="recommed_midel">距你{{item.aa}}</view>
+                        </view>
+                        
+                    </view>                    
+                </view>
+                <view class="jzz" hidden="{{mygd}}">
+                    <image class="Rotation" src="../images/jzz.png"></image>
+                    <view>加载中...</view>
+                </view>
+                <view class="kong" wx:if="{{pfstorelist.length==0}}">
+                    <image src="../images/wushuju.png"></image>
+                    <view>此分类暂无数据</view>
+                </view>
+            </block>
+        </view>
+        <view class="jzwb" wx:if="{{jzwb}}">
+            <view class="hx"></view>
+            <view class="wz">加载完毕</view>
+            <view class="hx"></view>
+        </view>
+    </view>
+</scroll-view>
